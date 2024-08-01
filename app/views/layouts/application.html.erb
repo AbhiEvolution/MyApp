@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to 'Home', root_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Profile', account_path %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Login', login_path %></li>
+            <li><%= link_to 'Sign Up', sign_up_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+    </header>
+
+    <main>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </main>  
+  </body>
+</html>
