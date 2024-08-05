@@ -1,0 +1,43 @@
+- flash.each do |key, message|
+  .flash{ class: key }
+    = message
+    %span.close-flash.cross-btn-icon
+      X
+:css
+  .flash {
+    padding: 15px 20px 15px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+
+  .flash.notice {
+    background-color: #e7f5ff;
+    color: #31708f;
+  }
+
+  .flash.alert {
+    background-color: #f8d7da;
+    color: #a94442;
+  }
+
+  .cross-btn-icon {
+    color: gray;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+-# :javascript
+-#   document.addEventListener('DOMContentLoaded', function() {
+-#     const closeButton = document.querySelector(".close-flash");
+-#     if (closeButton) {
+-#       closeButton.addEventListener('click', function(event) {
+-#         document.querySelector(".flash").style.display = 'none';
+-#       });
+-#     }
+-#   });

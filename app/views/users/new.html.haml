@@ -1,12 +1,12 @@
-.container
+.container.mt-5
   .row.justify-content-center
     .col-md-6
       .card
         .card-header
           %h3.card-title Sign Up
         .card-body
-          = form_with model: @user, url: sign_up_path, class: 'form-horizontal' do |form|
-            = render partial: "shared/form_errors", locals: { object: form.object }
+          = form_with model: @user, url: sign_up_path, class: 'form-horizontal', format: :html do |form|
+            = render partial: 'shared/form_errors', locals: { object: form.object }
             .form-group.mb-3
               = form.label :name, class: 'form-label'
               = form.text_field :name, required: true, class: 'form-control'
@@ -14,11 +14,10 @@
               = form.label :email, class: 'form-label'
               = form.email_field :email, required: true, class: 'form-control'
             .form-group.mb-3
-            .form-group.mb-3
               = form.label :password, class: 'form-label'
               = form.password_field :password, required: true, class: 'form-control'
             .form-group.mb-3
               = form.label :password_confirmation, class: 'form-label'
               = form.password_field :password_confirmation, required: true, class: 'form-control'
             .d-grid
-              = form.submit "Sign Up", class: 'btn btn-primary'
+              = form.submit 'Sign Up', class: 'btn btn-primary'

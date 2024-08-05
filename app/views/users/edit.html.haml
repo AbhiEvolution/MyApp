@@ -1,7 +1,7 @@
 .container
   %h2 Current Logins
   - if @active_sessions.any?
-    = button_to "Log out of all other sessions", destroy_all_active_sessions_path, method: :delete, class: 'btn btn-danger'
+    = button_to 'Log out of all other sessions', destroy_all_active_sessions_path, method: :delete, class: 'btn btn-danger'
     %table.table
       %thead
         %tr
@@ -17,18 +17,18 @@
       %h3.card-title Update Account
     .card-body
       = form_with model: @user, url: account_path, method: :put, html: { class: 'form-horizontal' } do |form|
-        = render partial: "shared/form_errors", locals: { object: form.object }
+        = render partial: 'shared/form_errors', locals: { object: form.object }
 
         .form-group
-          = form.label :email, "Current Email", class: 'form-label'
+          = form.label :email, 'Current Email', class: 'form-label'
           = form.email_field :email, disabled: true, class: 'form-control'
 
         .form-group
-          = form.label :name, "Current Name", class: 'form-label'
+          = form.label :name, 'Current Name', class: 'form-label'
           = form.text_field :name, class: 'form-control'
 
         .form-group
-          = form.label :unconfirmed_email, "New Email", class: 'form-label'
+          = form.label :unconfirmed_email, 'New Email', class: 'form-label'
           = form.text_field :unconfirmed_email, class: 'form-control'
 
         .form-group
@@ -42,8 +42,7 @@
         %hr
 
         .form-group
-          = form.label :current_password, "Current password (we need your current password to confirm your changes)", class: 'form-label'
+          = form.label :current_password, 'Current password (we need your current password to confirm your changes)', class: 'form-label'
           = form.password_field :current_password, required: true, class: 'form-control'
 
-        = form.submit "Update Account", class: 'btn btn-primary mt-2'
-
+        = form.submit 'Update Account', class: 'btn btn-primary mt-2'

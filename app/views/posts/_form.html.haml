@@ -1,0 +1,20 @@
+.container.mt-5
+  .row.justify-content-center
+    .col-md-6
+      .card
+        .card-header
+          %h3.card-title.text-center
+            = new_post
+          = form_with model: @post, class: 'form-horizontal', format: :html do |form|
+            = render partial: 'shared/form_errors', locals: { object: form.object }
+            .form-group.mb-3
+              = form.label :title, class: 'form-label'
+              = form.text_field :title, required: true, class: 'form-control'
+            .form-group.mb-3
+              = form.label :content, class: 'form-label'
+              = form.text_area :content, required: true, class: 'form-control'
+            .form-group.mb-3
+              = form.label :publish, class: 'form-label'
+              = form.check_box :publish, class: 'ms-1'
+            .d-grid
+              = form.submit class: 'btn btn-primary'

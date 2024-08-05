@@ -1,0 +1,9 @@
+.col-md-4.mt-2
+  .card
+    .card-header
+      %h3.card-title.text-center
+        =# truncate(post.title, length: 60)
+        = post.title
+    .card-body
+      %p
+        = post.content

@@ -7,7 +7,8 @@ class UsersController < ApplicationController
       @user.send_confirmation_email!
       render json: @user, status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+      Rails.logger.error(@user.errors.full_messages.to_sentence)
+      render :new, status: :unprocessable_entity
     end
   end
 

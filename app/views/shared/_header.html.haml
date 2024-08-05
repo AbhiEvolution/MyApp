@@ -1,0 +1,32 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    = link_to root_path, class: 'navbar-brand' do
+      %i.fas.fa-flag
+      Brand
+    %button.navbar-toggler{type: "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarSupportedContent", "aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto
+        = link_to root_path, class: "nav-link #{'active fw-bold' if current_page?(root_path)}" do
+          .fa.fa-home
+          Home
+        - if params[:controller] == 'posts' && params[:action] == 'index'
+          = link_to new_post_path, class: "nav-link #{'active fw-bold' if current_page?(new_post_path)}" do
+            .fa.fa-home
+            Create Post
+      %ul.navbar-nav.ms-auto
+        - if current_user
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle{href: "#", id: "navbarDropdown", role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"}
+              .fa.fa-user
+              %b= current_user.name
+            %ul.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+              = link_to account_path, class: "dropdown-item #{'active fw-bold' if current_page?(account_path)}" do
+                .fa.fa-cog
+                %b Account settings
+              = link_to logout_path, method: :delete, class: 'dropdown-item' do
+                .fa.fa-sign-out-alt
+                %b Sign out
+        - else
+          = link_to 'Log in', login_path, class: "nav-link #{'active fw-bold' if current_page?(login_path)}"
+          = link_to 'Sign up', sign_up_path, class: "nav-link #{'active fw-bold' if current_page?(sign_up_path)}"

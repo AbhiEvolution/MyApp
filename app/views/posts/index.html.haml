@@ -1,0 +1,14 @@
+.container.mt-5
+  %h1.text-center
+    Unpublished
+  .row
+    = render @unpublished_posts
+  %h1.text-center
+    Published
+  .row
+    = render @pubished_posts
+
+:css
+  .container h1 {
+    border-bottom: 5px solid grey;
+  }

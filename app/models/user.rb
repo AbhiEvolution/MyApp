@@ -10,6 +10,9 @@ class User < ApplicationRecord
 
   has_many :active_sessions, dependent: :destroy
   has_secure_password
+  #has_many :posts, dependent: :destroy
+  has_many :posts, class_name: "Post", foreign_key: "user_id", dependent: :destroy
+  # has_secure_token :remember_token
 
   before_save :downcase_email
 
@@ -43,6 +46,7 @@ class User < ApplicationRecord
   end
 
   def confirmed?
+    # debugger
     confirmed_at.present?
   end
 

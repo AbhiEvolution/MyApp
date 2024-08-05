@@ -16,11 +16,6 @@ module Authentication
     cookies.delete :remember_token
   end
 
-  # def remember(user)
-  #   user.regenerate_remember_token
-  #   cookies.permanent.encrypted[:remember_token] = user.remember_token
-  # end
-
   def remember(active_session)
     cookies.permanent.encrypted[:remember_token] = active_session.remember_token
   end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get "up" => "rails/health#show", as: :rails_health_check
-  root "static_pages#home"
+  root 'application#home'
   post "sign_up", to: "users#create"
   get "sign_up", to: "users#new"
   resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
@@ -17,4 +16,6 @@ Rails.application.routes.draw do
       delete "destroy_all"
     end
   end
+  get 'static_pages/home'
+  resources :posts
 end
